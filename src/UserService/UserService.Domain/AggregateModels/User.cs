@@ -15,8 +15,8 @@ public class User : BaseEntity, IAggregateRoot
     public string Password { get; set; }
     public bool IsEnabled { get; set; }
 
-    private int userStatusId;
-    public UserStatus UserStatus { get; private set; }
+    public int userStatusId { get; private set; }
+    public UserStatus UserStatus { get; set; }
 
     private readonly List<UserRole> _userRoles;
 

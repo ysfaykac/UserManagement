@@ -1,0 +1,92 @@
+version: '3.7'
+ 
+services:
+  usermanagement_api:
+    build:
+      context: .
+      dockerfile: ./src/UserManagementService/UserManagement.Api/Dockerfile
+    container_name: c_usermanagementapi
+    restart: unless-stopped
+    image: usermanagementapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - "4444:80"
+    depends_on:
+      - usermanagement_grpc
+    networks:
+      - n_usermanagementservice
+  userservice_api:
+    build:
+      context: .
+      dockerfile: ./src/UserService/UserService.Api/Dockerfile
+    container_name: c_userserviceapi
+    restart: unless-stopped
+    image: userserviceapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - "4445:80"
+    networks:
+      - n_usermanagementservice
+  usermanagement_grpc:
+    build:
+      context: .
+      dockerfile: ./src/UserManagementService/UserManagement.GrpcService/Dockerfile
+    container_name: c_usermanagementgrpc
+    restart: unless-stopped
+    image: usermanagementgrpc
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - "4446:80"
+    depends_on:
+      - postgresql_database
+    networks:
+      - n_usermanagementservice
+  postgresql_database:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=UserDb
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+    networks:
+      - n_usermanagementservice
+     
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@test.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - "5050:80"
+    restart: always
+    volumes:
+      - pgadmin:/root/.pgadmin
+    networks:
+      - n_usermanagementservice
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+        - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+        - n_usermanagementservice
+ 
+volumes:
+  database-data:
+  pgadmin:
+
+networks:
+  n_usermanagementservice:
+    name: n_usermanagementservice
+    driver: bridge   
