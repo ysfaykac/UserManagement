@@ -34,7 +34,7 @@ You will need the following tools:
 ```
 **Application Run**
 
-For it to run in Visual Studio, make sure the .net 5 sdk is installed and the postgresql container in docker-compose is running. There are 3 main projects that need to be run after opening the project. These are UserManagement.Api, UserService.Api and UserManagement.Grpc. 
+For it to run in Visual Studio, make sure the .net 6 sdk is installed and the postgresql container in docker-compose is running. There are 3 main projects that need to be run after opening the project. These are UserManagement.Api, UserService.Api and UserManagement.Grpc. 
 Select these projects as multiple startup projects and run the application.
 
 **Enpoints**
