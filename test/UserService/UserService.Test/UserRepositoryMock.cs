@@ -51,10 +51,10 @@ public class UserRepositoryMock
         var mockedUserInfoRepository = new Mock<IUserRepository>();
         mockedUserInfoRepository.Setup(userInfoRepository => userInfoRepository.GetAll()).ReturnsAsync(userInfos);
 
-        mockedUserInfoRepository.Setup(userInfoRepository => userInfoRepository.AddAsync(It.IsAny<User>())).ReturnsAsync(((UserInfo userInfo) => userInfo));
+        mockedUserInfoRepository.Setup(userInfoRepository => userInfoRepository.AddAsync(It.IsAny<User>())).ReturnsAsync(((User userInfo) => userInfo));
         mockedUserInfoRepository.Setup(userInfoRepository => userInfoRepository.GetById(It.IsAny<Guid>())).ReturnsAsync((Guid id) => userInfos.Single(t => t.Id == id));
 
-        mockedUserInfoRepository.Setup(userInfoRepository => userInfoRepository.GetSingleAsync(It.IsAny<Expression<Func<UserInfo, bool>>>()))
+        mockedUserInfoRepository.Setup(userInfoRepository => userInfoRepository.GetSingleAsync(It.IsAny<Expression<Func<User, bool>>>()))
             .ReturnsAsync((Expression<Func<User, bool>> filter) => userInfos.First(filter.Compile()));
 
         mockedUserInfoRepository.Setup(t => t.UnitOfWork.SaveChangesAsync(CancellationToken.None)).ReturnsAsync(1);

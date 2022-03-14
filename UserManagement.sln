@@ -46,17 +46,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ACDF76DA-8D21-4D9D-B990-8CDFA90BFE48}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
-		init.sql = init.sql
 		Readme.md = Readme.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserManagement", "UserManagement", "{F17F1416-C600-4407-832D-7B0E1C0DD67A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManagement.Test", "test\UserManagement\UserManagement.Test\UserManagement.Test.csproj", "{8DD258DD-4F34-46AE-9273-D3FA43C55F99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserManagement.Test", "test\UserManagement\UserManagement.Test\UserManagement.Test.csproj", "{8DD258DD-4F34-46AE-9273-D3FA43C55F99}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserService", "UserService", "{4FC4EE65-4672-4C22-A1FC-98D7EE17964A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Test", "test\UserService\UserService.Test\UserService.Test.csproj", "{4934B863-C52E-4798-85BB-813D6A2C8B8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService.Test", "test\UserService\UserService.Test\UserService.Test.csproj", "{4934B863-C52E-4798-85BB-813D6A2C8B8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

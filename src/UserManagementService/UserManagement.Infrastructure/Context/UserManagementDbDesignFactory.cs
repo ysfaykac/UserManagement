@@ -13,7 +13,7 @@ namespace UserManagement.Infrastructure.Context
 
         public UserManagementDbContext CreateDbContext(string[] args)
         {
-            var conn = "Host=localhost;Port=5432;Database=UserManagementDb;Username=admin;Password=admin";
+            var conn = "Host=localhost;Port=5433;Database=UserManagementDb;Username=admin;Password=admin";
             var optionsBuilder = new DbContextOptionsBuilder<UserManagementDbContext>().UseNpgsql(conn);
             return new UserManagementDbContext(optionsBuilder.Options,new NoMediator());
         }

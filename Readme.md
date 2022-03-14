@@ -42,14 +42,14 @@ Select these projects as multiple startup projects and run the application.
 There are 3 endpoints and one hosted service application. Endpoints are listed below.
 
 ```
-  http://localhost:55610/ UserManagement.Api
+  http://localhost:55611/ UserManagement.Api
   http://localhost:54555 UserService.Api
   http://localhost:5289/ UserManagement.Grpc
   http://localhost:5050/  PgAdmin
   http://localhost:5432/  Postgresql
   http://localhost:15672/ RabbitMq
 ```
-Ps: If the db is not created, please make sure that the commands in init.sql are working.
+
 
 # Test Project
 You can see some usage in test folder.
