@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option csharp_namespace = "UserManagement.Api";
+
+package user_management;
+
+service UserManagement {
+  rpc AcceptRegistration (AcceptRegistrationRequest) returns (AcceptRegistrationResponse);
+  rpc DeclineRegistration (DeclineRegistrationRequest) returns (DeclineRegistrationResponse);
+  rpc EnableUser (EnableUserRequest) returns (EnableUserResponse);
+  rpc DisableUser (DisableUserRequest) returns (DisableUserResponse);
+  rpc GetUserList (GetUserListRequest) returns (GetUserListResponse);
+}
+
+message AcceptRegistrationRequest {
+  string user_id = 1;
+}
+
+message AcceptRegistrationResponse {
+  string message = 1;
+}
+
+message DeclineRegistrationRequest {
+	string user_id = 1;
+}
+
+message DeclineRegistrationResponse {
+	string message = 1;
+}
+
+message EnableUserRequest {
+	string user_id = 1;
+}
+
+message EnableUserResponse {
+	string message = 1;
+}
+
+message DisableUserRequest {
+	string user_id = 1;
+}
+
+message DisableUserResponse {
+	string message = 1;
+}
+
+message GetUserListRequest {
+}
+
+message GetUserListResponse {
+	repeated User user=1;
+}
+
+message User {
+	string id = 1;
+	string user_name = 2;
+	string first_name = 3;
+	string last_name = 4;
+	string email = 5;
+}
